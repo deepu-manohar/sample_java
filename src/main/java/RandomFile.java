@@ -51,4 +51,16 @@ public class RandomFile {
             System.out.println("Error" + e.getMessage());
         }
     }
+
+    public void DivideTheNumbers(int a, int b){
+        try{
+            if(b == 0){
+                System.out.println(a / b);
+            } else{
+                throw new Exception("Invalid input");
+            }
+        }catch(Exception e){
+            System.out.println("Error" + e.getMessage());
+        }
+    }
 }
