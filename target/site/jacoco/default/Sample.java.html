@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Sample.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sample_java</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Sample.java</span></div><h1>Sample.java</h1><pre class="source lang-java linenums">import java.util.*;
+
+<span class="nc" id="L3">public class Sample {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L5">        System.out.println(&quot;Hello Coinbase!!&quot;);</span>
+<span class="nc" id="L6">        List&lt;IListIterator&gt; input = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L7">        input.add(new ListIterator(Arrays.asList(1, 2, 3)));</span>
+<span class="nc" id="L8">        input.add(new ListIterator(Arrays.asList(4, 5)));</span>
+<span class="nc" id="L9">        input.add(new ListIterator(Arrays.asList(6)));</span>
+<span class="nc" id="L10">        input.add(new ListIterator(Arrays.asList()));</span>
+<span class="nc" id="L11">        input.add(new ListIterator(Arrays.asList(7, 8, 9)));</span>
+<span class="nc" id="L12">        List&lt;Integer&gt; output = interleaveListIterator(input);</span>
+<span class="nc" id="L13">        System.out.println(output);</span>
+<span class="nc" id="L14">    }</span>
+
+    private static List&lt;Integer&gt; interleave(List&lt;List&lt;Integer&gt;&gt; input) {
+<span class="nc" id="L17">        Queue&lt;Integer&gt; result = new ArrayDeque&lt;&gt;();</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        if (input.size() == 0)</span>
+<span class="nc" id="L19">            return new ArrayList&lt;&gt;(result);</span>
+<span class="nc" id="L20">        boolean reachedEnd = false;</span>
+<span class="nc" id="L21">        int maxLengthReached = 0;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        for (int index = 0; reachedEnd == false; index++) {</span>
+<span class="nc" id="L23">            maxLengthReached = 0;</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">            for (int listIndex = 0; listIndex &lt; input.size(); listIndex++) {</span>
+<span class="nc" id="L25">                List&lt;Integer&gt; list = input.get(listIndex);</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">                if (list.size() &gt; index) {</span>
+<span class="nc" id="L27">                    result.offer(list.get(index));</span>
+                } else {
+<span class="nc" id="L29">                    maxLengthReached++;</span>
+                }
+            }
+<span class="nc bnc" id="L32" title="All 2 branches missed.">            if (maxLengthReached == input.size())</span>
+<span class="nc" id="L33">                reachedEnd = true;</span>
+        }
+<span class="nc" id="L35">        return new ArrayList&lt;&gt;(result);</span>
+    }
+
+
+    public static List&lt;Integer&gt; interleaveListIterator(List&lt;IListIterator&gt; input) {
+<span class="fc" id="L40">        Queue&lt;Integer&gt; result = new ArrayDeque&lt;&gt;();</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (input.size() == 0)</span>
+<span class="fc" id="L42">            return new ArrayList&lt;&gt;(result);</span>
+<span class="fc" id="L43">        boolean reachedEnd = false;</span>
+<span class="fc" id="L44">        int maxLengthReached = 0;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        while (reachedEnd == false) {</span>
+<span class="fc" id="L46">            maxLengthReached = 0;</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            for (int listIndex = 0; listIndex &lt; input.size(); listIndex++) {</span>
+<span class="fc" id="L48">                IListIterator list = input.get(listIndex);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                if (list.hasNext()) {</span>
+<span class="fc" id="L50">                    result.offer(list.next());</span>
+                } else {
+<span class="fc" id="L52">                    maxLengthReached++;</span>
+                }
+            }
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (maxLengthReached == input.size())</span>
+<span class="fc" id="L56">                reachedEnd = true;</span>
+        }
+<span class="fc" id="L58">        return new ArrayList&lt;&gt;(result);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
