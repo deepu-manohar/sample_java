@@ -16,5 +16,8 @@ jobs:
         run: mvn -B test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4-beta
+        with:
+            token: ${{ secrets.CODECOV_TOKEN }}
+            slug: deepu-manohar/sample_java
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}          
